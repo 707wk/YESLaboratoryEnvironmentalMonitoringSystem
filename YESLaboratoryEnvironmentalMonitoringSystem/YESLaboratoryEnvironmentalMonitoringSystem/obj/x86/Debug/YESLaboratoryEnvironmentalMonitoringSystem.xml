@@ -72,6 +72,47 @@ YESLaboratoryEnvironmentalMonitoringSystem
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
 </member>
+<member name="T:YESLaboratoryEnvironmentalMonitoringSystem.HardwareHelper">
+ <summary>
+ 硬件辅助类
+ </summary>
+</member>
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.HardwareHelper.SP">
+ <summary>
+ 串口变量
+ </summary>
+</member>
+<member name="P:YESLaboratoryEnvironmentalMonitoringSystem.HardwareHelper.IsOpen">
+ <summary>
+ 是否连接串口
+ </summary>
+ <returns></returns>
+</member>
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.HardwareHelper.UIMainForm">
+ <summary>
+ 主窗体
+ </summary>
+</member>
+<member name="M:YESLaboratoryEnvironmentalMonitoringSystem.HardwareHelper.Connect(System.String,System.Int32)">
+ <summary>
+ 连接串口
+ </summary>
+</member>
+<member name="M:YESLaboratoryEnvironmentalMonitoringSystem.HardwareHelper.DisConnect">
+ <summary>
+ 断开串口
+ </summary>
+</member>
+<member name="M:YESLaboratoryEnvironmentalMonitoringSystem.HardwareHelper.GetSensorData">
+ <summary>
+ 读取传感器监测值
+ </summary>
+</member>
+<member name="M:YESLaboratoryEnvironmentalMonitoringSystem.HardwareHelper.SetMCUDatetime">
+ <summary>
+ 单片机对时
+ </summary>
+</member>
 <member name="T:YESLaboratoryEnvironmentalMonitoringSystem.AppSettingHelper">
  <summary>
  全局配置辅助类
@@ -112,6 +153,21 @@ YESLaboratoryEnvironmentalMonitoringSystem
 <member name="T:YESLaboratoryEnvironmentalMonitoringSystem.AppSetting">
  <summary>
  全局配置类
+ </summary>
+</member>
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.AppSetting.SerialPort">
+ <summary>
+ 串口号
+ </summary>
+</member>
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.AppSetting.BPS">
+ <summary>
+ 波特率
+ </summary>
+</member>
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.AppSetting.pollingInterval">
+ <summary>
+ 设备轮询间隔(ms)
  </summary>
 </member>
 </members>

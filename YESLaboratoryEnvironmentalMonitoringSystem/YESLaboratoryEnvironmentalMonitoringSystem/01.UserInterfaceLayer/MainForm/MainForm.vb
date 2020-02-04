@@ -4,10 +4,6 @@
         Me.Text = $"{My.Application.Info.Title} V{AppSettingHelper.ProductVersion}"
 #End Region
 
-        UserRadioButton5.Checked = True
-        UserRadioButton4.Checked = True
-        UserRadioButton2.Checked = True
-
     End Sub
 
     Private Sub MainForm_Shown(sender As Object, e As EventArgs) Handles Me.Shown
@@ -23,14 +19,12 @@
         Dim tmpList() As TimeBucketControl = (From item As TimeBucketControl In FlowLayoutPanel1.Controls).ToArray
 
         For i001 = 0 To tmpList.Count - 1
-            'FlowLayoutPanel1.Controls.SetChildIndex(tmpList(i001), i001)
-            'Dim tmpTimeBucketControl = CType(tmpList(i001), TimeBucketControl)
 
-            'If i001 = 0 Then
-            '    tmpTimeBucketControl.IsOK(True)
-            'Else
-            '    tmpTimeBucketControl.IsOK(CType(tmpList(i001 - 1), TimeBucketControl).StartTime <= tmpTimeBucketControl.StartTime)
-            'End If
+            If i001 = tmpList.Count - 1 Then
+                tmpList(i001).StopTime = 48
+                tmpList(i001).UpdateTimeCount()
+            End If
+
             If i001 = 0 Then
                 Continue For
             End If
@@ -42,16 +36,12 @@
             tmpList(i001 - 1).StopTime = tmpList(i001).StartTime
             tmpList(i001 - 1).UpdateTimeCount()
 
-            If i001 = tmpList.Count - 1 Then
-                tmpList(i001).StopTime = 48
-                tmpList(i001).UpdateTimeCount()
-            End If
-
         Next
     End Sub
 
-    Private Sub SetChildIndex(child As Control, newIndex As Integer)
-        FlowLayoutPanel1.Controls.SetChildIndex(child, newIndex)
+    Public Sub RemoveChild(child As TimeBucketControl)
+        FlowLayoutPanel1.Controls.Remove(child)
+        CheckTime()
     End Sub
 
 End Class

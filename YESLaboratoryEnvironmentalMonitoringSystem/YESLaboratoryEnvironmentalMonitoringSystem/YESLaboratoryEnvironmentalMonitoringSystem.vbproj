@@ -68,6 +68,12 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="Wangk.Hash">
+      <HintPath>..\..\WangkNamespace\DLL\Wangk.Hash.dll</HintPath>
+    </Reference>
+    <Reference Include="Wangk.Resource">
+      <HintPath>..\..\WangkNamespace\DLL\Wangk.Resource.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -98,6 +104,7 @@
     <Compile Include="01.UserInterfaceLayer\MainForm\MainForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="02.BusinessLogicLayer\HardwareHelper.vb" />
     <Compile Include="03.DataAccessLayer\AppSetting\AppSettingHelper.vb" />
     <Compile Include="03.DataAccessLayer\AppSetting\AppSetting.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -145,7 +152,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="01.UserInterfaceLayer\MainForm\ChildForm\" />
-    <Folder Include="02.BusinessLogicLayer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="logo.ico" />

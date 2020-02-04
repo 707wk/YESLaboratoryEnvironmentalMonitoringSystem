@@ -37,9 +37,6 @@ Partial Class MainForm
         Me.LabelItem1 = New DevComponents.DotNetBar.LabelItem()
         Me.ComboBoxItem1 = New DevComponents.DotNetBar.ComboBoxItem()
         Me.ButtonItem1 = New DevComponents.DotNetBar.ButtonItem()
-        Me.ItemContainer3 = New DevComponents.DotNetBar.ItemContainer()
-        Me.LabelItem2 = New DevComponents.DotNetBar.LabelItem()
-        Me.ComboBoxItem2 = New DevComponents.DotNetBar.ComboBoxItem()
         Me.ButtonItem2 = New DevComponents.DotNetBar.ButtonItem()
         Me.ButtonItem3 = New DevComponents.DotNetBar.ButtonItem()
         Me.RibbonTabItem1 = New DevComponents.DotNetBar.RibbonTabItem()
@@ -60,31 +57,22 @@ Partial Class MainForm
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.TableLayoutPanel2 = New System.Windows.Forms.TableLayoutPanel()
+        Me.SwitchButton3 = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.SwitchButton2 = New DevComponents.DotNetBar.Controls.SwitchButton()
+        Me.SwitchButton1 = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label13 = New System.Windows.Forms.Label()
         Me.NumericUpDown1 = New System.Windows.Forms.NumericUpDown()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Label23 = New System.Windows.Forms.Label()
-        Me.Panel6 = New System.Windows.Forms.Panel()
-        Me.UserRadioButton6 = New YESLaboratoryEnvironmentalMonitoringSystem.UserRadioButton()
-        Me.UserRadioButton5 = New YESLaboratoryEnvironmentalMonitoringSystem.UserRadioButton()
+        Me.Label26 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label24 = New System.Windows.Forms.Label()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.UserRadioButton1 = New YESLaboratoryEnvironmentalMonitoringSystem.UserRadioButton()
-        Me.UserRadioButton2 = New YESLaboratoryEnvironmentalMonitoringSystem.UserRadioButton()
-        Me.Label25 = New System.Windows.Forms.Label()
-        Me.Label26 = New System.Windows.Forms.Label()
-        Me.NumericUpDown5 = New System.Windows.Forms.NumericUpDown()
         Me.NumericUpDown6 = New System.Windows.Forms.NumericUpDown()
-        Me.Label28 = New System.Windows.Forms.Label()
-        Me.Label29 = New System.Windows.Forms.Label()
-        Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.UserRadioButton3 = New YESLaboratoryEnvironmentalMonitoringSystem.UserRadioButton()
-        Me.UserRadioButton4 = New YESLaboratoryEnvironmentalMonitoringSystem.UserRadioButton()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.NumericUpDown5 = New System.Windows.Forms.NumericUpDown()
+        Me.GetSensorDataTimer = New System.Windows.Forms.Timer(Me.components)
         Me.RibbonControl1.SuspendLayout()
         Me.RibbonPanel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -92,13 +80,9 @@ Partial Class MainForm
         Me.GroupBox2.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
-        Me.TableLayoutPanel2.SuspendLayout()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel6.SuspendLayout()
-        Me.Panel1.SuspendLayout()
-        CType(Me.NumericUpDown5, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown6, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.Panel2.SuspendLayout()
+        CType(Me.NumericUpDown5, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'StyleManager1
@@ -264,7 +248,7 @@ Partial Class MainForm
         Me.ItemContainer2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
         Me.ItemContainer2.LayoutOrientation = DevComponents.DotNetBar.eOrientation.Vertical
         Me.ItemContainer2.Name = "ItemContainer2"
-        Me.ItemContainer2.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer1, Me.ItemContainer3})
+        Me.ItemContainer2.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.ItemContainer1})
         '
         '
         '
@@ -300,6 +284,7 @@ Partial Class MainForm
         '
         'ComboBoxItem1
         '
+        Me.ComboBoxItem1.ComboWidth = 80
         Me.ComboBoxItem1.DropDownHeight = 106
         Me.ComboBoxItem1.ItemHeight = 18
         Me.ComboBoxItem1.LabelForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
@@ -312,39 +297,6 @@ Partial Class MainForm
         Me.ButtonItem1.Name = "ButtonItem1"
         Me.ButtonItem1.SubItemsExpandWidth = 14
         Me.ButtonItem1.Text = "刷新"
-        '
-        'ItemContainer3
-        '
-        '
-        '
-        '
-        Me.ItemContainer3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        Me.ItemContainer3.HorizontalItemAlignment = DevComponents.DotNetBar.eHorizontalItemsAlignment.Right
-        Me.ItemContainer3.Name = "ItemContainer3"
-        Me.ItemContainer3.SubItems.AddRange(New DevComponents.DotNetBar.BaseItem() {Me.LabelItem2, Me.ComboBoxItem2})
-        '
-        '
-        '
-        Me.ItemContainer3.TitleMouseOverStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        '
-        '
-        Me.ItemContainer3.TitleStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
-        '
-        'LabelItem2
-        '
-        Me.LabelItem2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(215, Byte), Integer), CType(CType(215, Byte), Integer), CType(CType(215, Byte), Integer))
-        Me.LabelItem2.Name = "LabelItem2"
-        Me.LabelItem2.Text = "波特率:"
-        '
-        'ComboBoxItem2
-        '
-        Me.ComboBoxItem2.ComboWidth = 90
-        Me.ComboBoxItem2.DropDownHeight = 106
-        Me.ComboBoxItem2.ItemHeight = 18
-        Me.ComboBoxItem2.LabelForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
-        Me.ComboBoxItem2.Name = "ComboBoxItem2"
-        Me.ComboBoxItem2.WatermarkFont = New System.Drawing.Font("宋体", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         '
         'ButtonItem2
         '
@@ -377,8 +329,9 @@ Partial Class MainForm
         '
         'GroupBox1
         '
-        Me.GroupBox1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.GroupBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.FlowLayoutPanel1)
         Me.GroupBox1.Controls.Add(Me.ToolStrip1)
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
@@ -548,7 +501,21 @@ Partial Class MainForm
         '
         Me.GroupBox3.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.GroupBox3.Controls.Add(Me.TableLayoutPanel2)
+        Me.GroupBox3.Controls.Add(Me.SwitchButton3)
+        Me.GroupBox3.Controls.Add(Me.SwitchButton2)
+        Me.GroupBox3.Controls.Add(Me.SwitchButton1)
+        Me.GroupBox3.Controls.Add(Me.Label11)
+        Me.GroupBox3.Controls.Add(Me.Label10)
+        Me.GroupBox3.Controls.Add(Me.NumericUpDown1)
+        Me.GroupBox3.Controls.Add(Me.Label21)
+        Me.GroupBox3.Controls.Add(Me.Label22)
+        Me.GroupBox3.Controls.Add(Me.Label23)
+        Me.GroupBox3.Controls.Add(Me.Label26)
+        Me.GroupBox3.Controls.Add(Me.Label12)
+        Me.GroupBox3.Controls.Add(Me.Label24)
+        Me.GroupBox3.Controls.Add(Me.NumericUpDown6)
+        Me.GroupBox3.Controls.Add(Me.Label25)
+        Me.GroupBox3.Controls.Add(Me.NumericUpDown5)
         Me.GroupBox3.ForeColor = System.Drawing.Color.White
         Me.GroupBox3.Location = New System.Drawing.Point(12, 260)
         Me.GroupBox3.Name = "GroupBox3"
@@ -557,284 +524,154 @@ Partial Class MainForm
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "默认设置"
         '
-        'TableLayoutPanel2
+        'SwitchButton3
         '
-        Me.TableLayoutPanel2.ColumnCount = 6
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32.0!))
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel2.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
-        Me.TableLayoutPanel2.Controls.Add(Me.Label11, 0, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label10, 3, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label13, 1, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.NumericUpDown1, 2, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label21, 3, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label22, 3, 2)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label23, 4, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.Panel6, 5, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label12, 4, 0)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label24, 4, 2)
-        Me.TableLayoutPanel2.Controls.Add(Me.Panel1, 5, 2)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label25, 0, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label26, 0, 2)
-        Me.TableLayoutPanel2.Controls.Add(Me.NumericUpDown5, 2, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.NumericUpDown6, 2, 2)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label28, 1, 1)
-        Me.TableLayoutPanel2.Controls.Add(Me.Label29, 1, 2)
-        Me.TableLayoutPanel2.Controls.Add(Me.Panel2, 5, 1)
-        Me.TableLayoutPanel2.Location = New System.Drawing.Point(6, 22)
-        Me.TableLayoutPanel2.Name = "TableLayoutPanel2"
-        Me.TableLayoutPanel2.RowCount = 3
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel2.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
-        Me.TableLayoutPanel2.Size = New System.Drawing.Size(369, 83)
-        Me.TableLayoutPanel2.TabIndex = 19
+        '
+        '
+        '
+        Me.SwitchButton3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.SwitchButton3.Location = New System.Drawing.Point(273, 77)
+        Me.SwitchButton3.Name = "SwitchButton3"
+        Me.SwitchButton3.OffText = "断开"
+        Me.SwitchButton3.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.SwitchButton3.OnText = "连通"
+        Me.SwitchButton3.Size = New System.Drawing.Size(66, 22)
+        Me.SwitchButton3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.SwitchButton3.TabIndex = 31
+        '
+        'SwitchButton2
+        '
+        '
+        '
+        '
+        Me.SwitchButton2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.SwitchButton2.Location = New System.Drawing.Point(273, 49)
+        Me.SwitchButton2.Name = "SwitchButton2"
+        Me.SwitchButton2.OffText = "断开"
+        Me.SwitchButton2.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.SwitchButton2.OnText = "连通"
+        Me.SwitchButton2.Size = New System.Drawing.Size(66, 22)
+        Me.SwitchButton2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.SwitchButton2.TabIndex = 32
+        '
+        'SwitchButton1
+        '
+        '
+        '
+        '
+        Me.SwitchButton1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.SwitchButton1.Location = New System.Drawing.Point(273, 22)
+        Me.SwitchButton1.Name = "SwitchButton1"
+        Me.SwitchButton1.OffText = "断开"
+        Me.SwitchButton1.OnBackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.SwitchButton1.OnText = "连通"
+        Me.SwitchButton1.Size = New System.Drawing.Size(66, 22)
+        Me.SwitchButton1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.SwitchButton1.TabIndex = 33
         '
         'Label11
         '
-        Me.Label11.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(28, 5)
+        Me.Label11.Location = New System.Drawing.Point(52, 25)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(44, 17)
-        Me.Label11.TabIndex = 13
-        Me.Label11.Text = "温度值"
+        Me.Label11.Size = New System.Drawing.Size(72, 17)
+        Me.Label11.TabIndex = 22
+        Me.Label11.Text = "温度值 大于"
         '
         'Label10
         '
-        Me.Label10.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label10.Image = Global.YESLaboratoryEnvironmentalMonitoringSystem.My.Resources.Resources.right_16px
-        Me.Label10.Location = New System.Drawing.Point(168, 2)
+        Me.Label10.Location = New System.Drawing.Point(186, 22)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(22, 22)
-        Me.Label10.TabIndex = 16
-        '
-        'Label13
-        '
-        Me.Label13.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(78, 5)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(32, 17)
-        Me.Label13.TabIndex = 14
-        Me.Label13.Text = "大于"
+        Me.Label10.TabIndex = 28
         '
         'NumericUpDown1
         '
-        Me.NumericUpDown1.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.NumericUpDown1.Location = New System.Drawing.Point(116, 3)
+        Me.NumericUpDown1.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown1.DecimalPlaces = 1
+        Me.NumericUpDown1.Location = New System.Drawing.Point(130, 24)
         Me.NumericUpDown1.Name = "NumericUpDown1"
-        Me.NumericUpDown1.Size = New System.Drawing.Size(44, 23)
-        Me.NumericUpDown1.TabIndex = 8
+        Me.NumericUpDown1.Size = New System.Drawing.Size(50, 19)
+        Me.NumericUpDown1.TabIndex = 19
         '
         'Label21
         '
-        Me.Label21.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label21.Image = Global.YESLaboratoryEnvironmentalMonitoringSystem.My.Resources.Resources.right_16px
-        Me.Label21.Location = New System.Drawing.Point(168, 29)
+        Me.Label21.Location = New System.Drawing.Point(186, 49)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(22, 22)
-        Me.Label21.TabIndex = 16
+        Me.Label21.TabIndex = 29
         '
         'Label22
         '
-        Me.Label22.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label22.Image = Global.YESLaboratoryEnvironmentalMonitoringSystem.My.Resources.Resources.right_16px
-        Me.Label22.Location = New System.Drawing.Point(168, 57)
+        Me.Label22.Location = New System.Drawing.Point(186, 77)
         Me.Label22.Name = "Label22"
         Me.Label22.Size = New System.Drawing.Size(22, 22)
-        Me.Label22.TabIndex = 16
+        Me.Label22.TabIndex = 30
         '
         'Label23
         '
-        Me.Label23.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label23.AutoSize = True
-        Me.Label23.Location = New System.Drawing.Point(198, 32)
+        Me.Label23.Location = New System.Drawing.Point(216, 52)
         Me.Label23.Name = "Label23"
         Me.Label23.Size = New System.Drawing.Size(51, 17)
-        Me.Label23.TabIndex = 14
+        Me.Label23.TabIndex = 25
         Me.Label23.Text = "继电器2"
         '
-        'Panel6
+        'Label26
         '
-        Me.Panel6.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Panel6.Controls.Add(Me.UserRadioButton6)
-        Me.Panel6.Controls.Add(Me.UserRadioButton5)
-        Me.Panel6.Location = New System.Drawing.Point(255, 3)
-        Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(108, 21)
-        Me.Panel6.TabIndex = 16
-        '
-        'UserRadioButton6
-        '
-        Me.UserRadioButton6.AutoSize = True
-        Me.UserRadioButton6.Font = New System.Drawing.Font("微软雅黑", 9.0!)
-        Me.UserRadioButton6.Location = New System.Drawing.Point(56, 0)
-        Me.UserRadioButton6.Name = "UserRadioButton6"
-        Me.UserRadioButton6.Size = New System.Drawing.Size(50, 21)
-        Me.UserRadioButton6.TabIndex = 0
-        Me.UserRadioButton6.TabStop = True
-        Me.UserRadioButton6.Text = "断开"
-        Me.UserRadioButton6.UseVisualStyleBackColor = True
-        '
-        'UserRadioButton5
-        '
-        Me.UserRadioButton5.AutoSize = True
-        Me.UserRadioButton5.Font = New System.Drawing.Font("微软雅黑", 9.0!)
-        Me.UserRadioButton5.Location = New System.Drawing.Point(0, 0)
-        Me.UserRadioButton5.Name = "UserRadioButton5"
-        Me.UserRadioButton5.Size = New System.Drawing.Size(50, 21)
-        Me.UserRadioButton5.TabIndex = 0
-        Me.UserRadioButton5.TabStop = True
-        Me.UserRadioButton5.Text = "连通"
-        Me.UserRadioButton5.UseVisualStyleBackColor = True
+        Me.Label26.AutoSize = True
+        Me.Label26.Location = New System.Drawing.Point(27, 80)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(97, 17)
+        Me.Label26.TabIndex = 23
+        Me.Label26.Text = "CO2浓度值 大于"
         '
         'Label12
         '
-        Me.Label12.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(198, 5)
+        Me.Label12.Location = New System.Drawing.Point(216, 25)
         Me.Label12.Name = "Label12"
         Me.Label12.Size = New System.Drawing.Size(51, 17)
-        Me.Label12.TabIndex = 14
+        Me.Label12.TabIndex = 26
         Me.Label12.Text = "继电器1"
         '
         'Label24
         '
-        Me.Label24.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label24.AutoSize = True
-        Me.Label24.Location = New System.Drawing.Point(198, 60)
+        Me.Label24.Location = New System.Drawing.Point(216, 80)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(51, 17)
-        Me.Label24.TabIndex = 14
+        Me.Label24.TabIndex = 27
         Me.Label24.Text = "继电器3"
-        '
-        'Panel1
-        '
-        Me.Panel1.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Panel1.Controls.Add(Me.UserRadioButton1)
-        Me.Panel1.Controls.Add(Me.UserRadioButton2)
-        Me.Panel1.Location = New System.Drawing.Point(255, 57)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(108, 23)
-        Me.Panel1.TabIndex = 16
-        '
-        'UserRadioButton1
-        '
-        Me.UserRadioButton1.AutoSize = True
-        Me.UserRadioButton1.Font = New System.Drawing.Font("微软雅黑", 9.0!)
-        Me.UserRadioButton1.Location = New System.Drawing.Point(56, 0)
-        Me.UserRadioButton1.Name = "UserRadioButton1"
-        Me.UserRadioButton1.Size = New System.Drawing.Size(50, 21)
-        Me.UserRadioButton1.TabIndex = 0
-        Me.UserRadioButton1.TabStop = True
-        Me.UserRadioButton1.Text = "断开"
-        Me.UserRadioButton1.UseVisualStyleBackColor = True
-        '
-        'UserRadioButton2
-        '
-        Me.UserRadioButton2.AutoSize = True
-        Me.UserRadioButton2.Font = New System.Drawing.Font("微软雅黑", 9.0!)
-        Me.UserRadioButton2.Location = New System.Drawing.Point(0, 0)
-        Me.UserRadioButton2.Name = "UserRadioButton2"
-        Me.UserRadioButton2.Size = New System.Drawing.Size(50, 21)
-        Me.UserRadioButton2.TabIndex = 0
-        Me.UserRadioButton2.TabStop = True
-        Me.UserRadioButton2.Text = "连通"
-        Me.UserRadioButton2.UseVisualStyleBackColor = True
-        '
-        'Label25
-        '
-        Me.Label25.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(28, 32)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(44, 17)
-        Me.Label25.TabIndex = 13
-        Me.Label25.Text = "湿度值"
-        '
-        'Label26
-        '
-        Me.Label26.Anchor = System.Windows.Forms.AnchorStyles.Right
-        Me.Label26.AutoSize = True
-        Me.Label26.Location = New System.Drawing.Point(3, 60)
-        Me.Label26.Name = "Label26"
-        Me.Label26.Size = New System.Drawing.Size(69, 17)
-        Me.Label26.TabIndex = 13
-        Me.Label26.Text = "CO2浓度值"
-        '
-        'NumericUpDown5
-        '
-        Me.NumericUpDown5.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.NumericUpDown5.Location = New System.Drawing.Point(116, 30)
-        Me.NumericUpDown5.Name = "NumericUpDown5"
-        Me.NumericUpDown5.Size = New System.Drawing.Size(44, 23)
-        Me.NumericUpDown5.TabIndex = 8
         '
         'NumericUpDown6
         '
-        Me.NumericUpDown6.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.NumericUpDown6.Location = New System.Drawing.Point(116, 57)
+        Me.NumericUpDown6.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown6.Location = New System.Drawing.Point(130, 79)
         Me.NumericUpDown6.Name = "NumericUpDown6"
-        Me.NumericUpDown6.Size = New System.Drawing.Size(44, 23)
-        Me.NumericUpDown6.TabIndex = 8
+        Me.NumericUpDown6.Size = New System.Drawing.Size(50, 19)
+        Me.NumericUpDown6.TabIndex = 20
         '
-        'Label28
+        'Label25
         '
-        Me.Label28.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.Label28.AutoSize = True
-        Me.Label28.Location = New System.Drawing.Point(78, 32)
-        Me.Label28.Name = "Label28"
-        Me.Label28.Size = New System.Drawing.Size(32, 17)
-        Me.Label28.TabIndex = 14
-        Me.Label28.Text = "大于"
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(52, 52)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(72, 17)
+        Me.Label25.TabIndex = 24
+        Me.Label25.Text = "湿度值 大于"
         '
-        'Label29
+        'NumericUpDown5
         '
-        Me.Label29.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(78, 60)
-        Me.Label29.Name = "Label29"
-        Me.Label29.Size = New System.Drawing.Size(32, 17)
-        Me.Label29.TabIndex = 14
-        Me.Label29.Text = "大于"
-        '
-        'Panel2
-        '
-        Me.Panel2.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Panel2.Controls.Add(Me.UserRadioButton3)
-        Me.Panel2.Controls.Add(Me.UserRadioButton4)
-        Me.Panel2.Location = New System.Drawing.Point(255, 30)
-        Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(108, 21)
-        Me.Panel2.TabIndex = 16
-        '
-        'UserRadioButton3
-        '
-        Me.UserRadioButton3.AutoSize = True
-        Me.UserRadioButton3.Font = New System.Drawing.Font("微软雅黑", 9.0!)
-        Me.UserRadioButton3.Location = New System.Drawing.Point(56, 0)
-        Me.UserRadioButton3.Name = "UserRadioButton3"
-        Me.UserRadioButton3.Size = New System.Drawing.Size(50, 21)
-        Me.UserRadioButton3.TabIndex = 0
-        Me.UserRadioButton3.TabStop = True
-        Me.UserRadioButton3.Text = "断开"
-        Me.UserRadioButton3.UseVisualStyleBackColor = True
-        '
-        'UserRadioButton4
-        '
-        Me.UserRadioButton4.AutoSize = True
-        Me.UserRadioButton4.Font = New System.Drawing.Font("微软雅黑", 9.0!)
-        Me.UserRadioButton4.Location = New System.Drawing.Point(0, 0)
-        Me.UserRadioButton4.Name = "UserRadioButton4"
-        Me.UserRadioButton4.Size = New System.Drawing.Size(50, 21)
-        Me.UserRadioButton4.TabIndex = 0
-        Me.UserRadioButton4.TabStop = True
-        Me.UserRadioButton4.Text = "连通"
-        Me.UserRadioButton4.UseVisualStyleBackColor = True
+        Me.NumericUpDown5.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown5.DecimalPlaces = 1
+        Me.NumericUpDown5.Location = New System.Drawing.Point(130, 51)
+        Me.NumericUpDown5.Name = "NumericUpDown5"
+        Me.NumericUpDown5.Size = New System.Drawing.Size(50, 19)
+        Me.NumericUpDown5.TabIndex = 21
         '
         'MainForm
         '
@@ -864,17 +701,10 @@ Partial Class MainForm
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.TableLayoutPanel1.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
-        Me.TableLayoutPanel2.ResumeLayout(False)
-        Me.TableLayoutPanel2.PerformLayout()
+        Me.GroupBox3.PerformLayout()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel6.ResumeLayout(False)
-        Me.Panel6.PerformLayout()
-        Me.Panel1.ResumeLayout(False)
-        Me.Panel1.PerformLayout()
-        CType(Me.NumericUpDown5, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown6, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.Panel2.ResumeLayout(False)
-        Me.Panel2.PerformLayout()
+        CType(Me.NumericUpDown5, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -895,9 +725,6 @@ Partial Class MainForm
     Friend WithEvents LabelItem1 As DevComponents.DotNetBar.LabelItem
     Friend WithEvents ComboBoxItem1 As DevComponents.DotNetBar.ComboBoxItem
     Friend WithEvents ButtonItem1 As DevComponents.DotNetBar.ButtonItem
-    Friend WithEvents ItemContainer3 As DevComponents.DotNetBar.ItemContainer
-    Friend WithEvents LabelItem2 As DevComponents.DotNetBar.LabelItem
-    Friend WithEvents ComboBoxItem2 As DevComponents.DotNetBar.ComboBoxItem
     Friend WithEvents ButtonItem2 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem3 As DevComponents.DotNetBar.ButtonItem
     Friend WithEvents ButtonItem4 As DevComponents.DotNetBar.ButtonItem
@@ -914,29 +741,20 @@ Partial Class MainForm
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents TableLayoutPanel2 As TableLayoutPanel
+    Friend WithEvents SwitchButton3 As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents SwitchButton2 As DevComponents.DotNetBar.Controls.SwitchButton
+    Friend WithEvents SwitchButton1 As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents Label11 As Label
     Friend WithEvents Label10 As Label
-    Friend WithEvents Label13 As Label
     Friend WithEvents NumericUpDown1 As NumericUpDown
     Friend WithEvents Label21 As Label
     Friend WithEvents Label22 As Label
     Friend WithEvents Label23 As Label
-    Friend WithEvents Panel6 As Panel
-    Friend WithEvents UserRadioButton6 As UserRadioButton
-    Friend WithEvents UserRadioButton5 As UserRadioButton
+    Friend WithEvents Label26 As Label
     Friend WithEvents Label12 As Label
     Friend WithEvents Label24 As Label
-    Friend WithEvents Panel1 As Panel
-    Friend WithEvents UserRadioButton1 As UserRadioButton
-    Friend WithEvents UserRadioButton2 As UserRadioButton
-    Friend WithEvents Label25 As Label
-    Friend WithEvents Label26 As Label
-    Friend WithEvents NumericUpDown5 As NumericUpDown
     Friend WithEvents NumericUpDown6 As NumericUpDown
-    Friend WithEvents Label28 As Label
-    Friend WithEvents Label29 As Label
-    Friend WithEvents Panel2 As Panel
-    Friend WithEvents UserRadioButton3 As UserRadioButton
-    Friend WithEvents UserRadioButton4 As UserRadioButton
+    Friend WithEvents Label25 As Label
+    Friend WithEvents NumericUpDown5 As NumericUpDown
+    Friend WithEvents GetSensorDataTimer As Timer
 End Class

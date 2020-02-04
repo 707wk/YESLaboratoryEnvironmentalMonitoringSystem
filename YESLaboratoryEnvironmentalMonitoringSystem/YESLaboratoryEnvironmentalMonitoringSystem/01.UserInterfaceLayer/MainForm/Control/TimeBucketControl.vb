@@ -41,21 +41,19 @@
         'RangeSlider1_ValueChanged(Nothing, Nothing)
         Me.DoubleBuffered = True
 
-        UserRadioButton5.Checked = True
-        UserRadioButton4.Checked = True
-        UserRadioButton2.Checked = True
     End Sub
 
     Private Sub TrackBar1_ValueChanged(sender As Object, e As EventArgs) Handles TrackBar1.ValueChanged
         Label1.Text = $"开始 : {(TrackBar1.Value \ 2):d2}:{If(TrackBar1.Value Mod 2, 30, 0):d2}"
         'StartTime = TrackBar1.Value
 
+        UIMainForm.CheckTime()
 
     End Sub
 
     Public Sub UpdateTimeCount()
-        Dim changeX As Integer = 104 + 323 * StartTime / TrackBar1.Maximum
-        Dim changeWidth As Integer = 323 * (StopTime - StartTime) / TrackBar1.Maximum
+        Dim changeX As Integer = 15 + 434 * StartTime / TrackBar1.Maximum
+        Dim changeWidth As Integer = 434 * (StopTime - StartTime) / TrackBar1.Maximum
 
         Panel3.Location = New Point(changeX, Panel3.Location.Y)
         Panel3.Width = changeWidth
@@ -63,7 +61,13 @@
         Label2.Text = $"时长 : {((StopTime - StartTime) \ 2):d2}:{If((StopTime - StartTime) Mod 2, 30, 0):d2}"
     End Sub
 
-    Private Sub TrackBar1_Scroll(sender As Object, e As EventArgs) Handles TrackBar1.Scroll
-        UIMainForm.CheckTime()
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+        UIMainForm.RemoveChild(Me)
+    End Sub
+
+    '屏蔽鼠标滚轮事件
+    Private Sub TrackBar1_MouseWheel(sender As Object, e As MouseEventArgs) Handles TrackBar1.MouseWheel
+        Dim tmp As HandledMouseEventArgs = e
+        If tmp IsNot Nothing Then tmp.Handled = True
     End Sub
 End Class
