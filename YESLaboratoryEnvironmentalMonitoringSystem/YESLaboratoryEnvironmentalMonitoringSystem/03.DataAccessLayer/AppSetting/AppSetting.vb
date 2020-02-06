@@ -16,6 +16,13 @@ Public Class AppSetting
     ''' </summary>
     Public Shared pollingInterval As Integer = 1000
 
-
+    ''' <summary>
+    ''' 默认设置
+    ''' </summary>
+    Public DefaultTimeBucket As TimeBucketInfo
+    ''' <summary>
+    ''' 其他时间段设置
+    ''' </summary>
+    Public OtherTimeBucketItems As New List(Of TimeBucketInfo)
 
 End Class

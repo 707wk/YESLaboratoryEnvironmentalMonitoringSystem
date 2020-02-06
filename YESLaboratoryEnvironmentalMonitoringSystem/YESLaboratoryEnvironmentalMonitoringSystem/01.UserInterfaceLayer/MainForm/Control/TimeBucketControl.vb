@@ -1,5 +1,33 @@
 ﻿Public Class TimeBucketControl
 
+    Public Property DataSource As TimeBucketInfo
+        Get
+            Return New TimeBucketInfo With {
+            .StartTime = TrackBar1.Value,
+            .TemperatureThreshold = New DetectionInfo With {
+            .Maximum = NumericUpDown1.Value * 10,
+            .IsRelayConnectWhenBeyondTheMaximum = SwitchButton1.Value},
+            .HumidityThreshold = New DetectionInfo With {
+            .Maximum = NumericUpDown2.Value * 10,
+            .IsRelayConnectWhenBeyondTheMaximum = SwitchButton2.Value},
+            .CO2Threshold = New DetectionInfo With {
+            .Maximum = NumericUpDown3.Value,
+            .IsRelayConnectWhenBeyondTheMaximum = SwitchButton3.Value}
+            }
+        End Get
+        Set
+            TrackBar1.Value = Value.StartTime
+            NumericUpDown1.Value = Value.TemperatureThreshold.Maximum / 10
+            SwitchButton1.Value = Value.TemperatureThreshold.IsRelayConnectWhenBeyondTheMaximum
+
+            NumericUpDown2.Value = Value.HumidityThreshold.Maximum / 10
+            SwitchButton2.Value = Value.HumidityThreshold.IsRelayConnectWhenBeyondTheMaximum
+
+            NumericUpDown3.Value = Value.CO2Threshold.Maximum
+            SwitchButton3.Value = Value.CO2Threshold.IsRelayConnectWhenBeyondTheMaximum
+        End Set
+    End Property
+
     Public UIMainForm As MainForm
 
     'Private LastMin As Integer = 0
@@ -40,6 +68,26 @@
     Private Sub TimeBucketControl_Load(sender As Object, e As EventArgs) Handles Me.Load
         'RangeSlider1_ValueChanged(Nothing, Nothing)
         Me.DoubleBuffered = True
+
+        'TrackBar1.DataBindings.Add(New Binding("Value", DataSource, "StartTime", False, DataSourceUpdateMode.OnPropertyChanged))
+        'NumericUpDown1.DataBindings.Add("Value", DataSource.TemperatureThreshold, "Maximum", False, DataSourceUpdateMode.OnPropertyChanged)
+        'SwitchButton1.DataBindings.Add("Value", DataSource.TemperatureThreshold, "IsRelayConnectWhenBeyondTheMaximum", False, DataSourceUpdateMode.OnPropertyChanged)
+
+        'NumericUpDown2.DataBindings.Add("Value", DataSource.HumidityThreshold, "Maximum", False, DataSourceUpdateMode.OnPropertyChanged)
+        'SwitchButton2.DataBindings.Add("Value", DataSource.HumidityThreshold, "IsRelayConnectWhenBeyondTheMaximum", False, DataSourceUpdateMode.OnPropertyChanged)
+
+        'NumericUpDown3.DataBindings.Add("Value", DataSource.CO2Threshold, "Maximum", False, DataSourceUpdateMode.OnPropertyChanged)
+        'SwitchButton3.DataBindings.Add("Value", DataSource.CO2Threshold, "IsRelayConnectWhenBeyondTheMaximum", False, DataSourceUpdateMode.OnPropertyChanged)
+
+        'TrackBar1.Value = DataSource.StartTime
+        'NumericUpDown1.Value = DataSource.TemperatureThreshold.Maximum
+        'SwitchButton1.Value = DataSource.TemperatureThreshold.IsRelayConnectWhenBeyondTheMaximum
+
+        'NumericUpDown2.Value = DataSource.HumidityThreshold.Maximum
+        'SwitchButton2.Value = DataSource.HumidityThreshold.IsRelayConnectWhenBeyondTheMaximum
+
+        'NumericUpDown3.Value = DataSource.CO2Threshold.Maximum
+        'SwitchButton3.Value = DataSource.CO2Threshold.IsRelayConnectWhenBeyondTheMaximum
 
     End Sub
 

@@ -20,16 +20,20 @@ Public NotInheritable Class HardwareHelper
         End Get
     End Property
 
-    ''' <summary>
-    ''' 主窗体
-    ''' </summary>
-    Public Shared UIMainForm As MainForm
+    '''' <summary>
+    '''' 主窗体
+    '''' </summary>
+    'Public Shared UIMainForm As MainForm
 
 #Region "连接串口"
     ''' <summary>
     ''' 连接串口
     ''' </summary>
     Public Shared Sub Connect(SerialPort As String, BPS As Integer)
+        If SP.IsOpen Then
+            Exit Sub
+        End If
+
         With SP
             .PortName = SerialPort
             .BaudRate = BPS
@@ -50,6 +54,10 @@ Public NotInheritable Class HardwareHelper
     ''' 断开串口
     ''' </summary>
     Public Shared Sub DisConnect()
+        If Not SP.IsOpen Then
+            Exit Sub
+        End If
+
         Try
             SP.Close()
         Catch ex As Exception
@@ -63,13 +71,17 @@ Public NotInheritable Class HardwareHelper
     ''' 读取传感器监测值
     ''' </summary>
     Public Shared Function GetSensorData() As Integer()
+        If Not SP.IsOpen Then
+            Throw New Exception("串口未连接")
+        End If
+
         Dim sendData() = Wangk.Hash.Hex2Bin("aadb01050000")
         Dim CRC = Wangk.Hash.GetCRC16Modbus(sendData, sendData.Count - 2)
         Dim CRCBytes = BitConverter.GetBytes(CRC)
         sendData(sendData.Count - 2) = CRCBytes(0)
         sendData(sendData.Count - 1) = CRCBytes(1)
 
-        '发送检测指令
+        '发送指令
         SP.Write(sendData, 0, sendData.Count)
         '等待数据返回
         Threading.Thread.Sleep(500)
@@ -86,18 +98,115 @@ Public NotInheritable Class HardwareHelper
 
         Return {
             BitConverter.ToInt16({readData(1), readData(0)}, 0),
-            BitConverter.ToUInt16({readData(3), readData(2)}, 0),
-            BitConverter.ToUInt16({readData(5), readData(4)}, 0)
+            BitConverter.ToInt16({readData(3), readData(2)}, 0),
+            BitConverter.ToInt16({readData(5), readData(4)}, 0)
         }
     End Function
 #End Region
 
 #Region "回读配置信息"
+    ''' <summary>
+    ''' 回读配置信息
+    ''' </summary>
+    Public Shared Sub GetTimeBucket()
+        If Not SP.IsOpen Then
+            Throw New Exception("串口未连接")
+        End If
 
+        Dim sendData() = Wangk.Hash.Hex2Bin("aadb01030000")
+        Dim CRC = Wangk.Hash.GetCRC16Modbus(sendData, sendData.Count - 2)
+        Dim CRCBytes = BitConverter.GetBytes(CRC)
+        sendData(sendData.Count - 2) = CRCBytes(0)
+        sendData(sendData.Count - 1) = CRCBytes(1)
+
+        '发送指令
+        SP.Write(sendData, 0, sendData.Count)
+        '等待数据返回
+        Threading.Thread.Sleep(500)
+        Dim readData(128 - 1) As Byte
+        Dim readCount = SP.Read(readData, 0, 128)
+
+        '判断CRC
+        CRC = Wangk.Hash.GetCRC16Modbus(readData, readCount - 2)
+        CRCBytes = BitConverter.GetBytes(CRC)
+        If readData(readCount - 2) <> CRCBytes(0) OrElse
+            readData(readCount - 1) <> CRCBytes(1) Then
+            Throw New Exception($"数据校验失败:{Wangk.Hash.Bin2Hex(readData)}")
+        End If
+
+        With AppSettingHelper.Settings.DefaultTimeBucket
+            .TemperatureThreshold.Maximum = BitConverter.ToInt16({readData(1), readData(0)}, 0)
+            .TemperatureThreshold.IsRelayConnectWhenBeyondTheMaximum = If(readData(2) = 1, True, False)
+            .HumidityThreshold.Maximum = BitConverter.ToInt16({readData(4), readData(3)}, 0)
+            .HumidityThreshold.IsRelayConnectWhenBeyondTheMaximum = If(readData(5) = 1, True, False)
+            .CO2Threshold.Maximum = BitConverter.ToInt16({readData(7), readData(6)}, 0)
+            .CO2Threshold.IsRelayConnectWhenBeyondTheMaximum = If(readData(8) = 1, True, False)
+        End With
+
+        AppSettingHelper.Settings.OtherTimeBucketItems.Clear()
+        For i001 = 0 To readData(9) - 1
+            Dim addTimeBucket = New TimeBucketInfo
+            Dim tmpID = 10 + i001 * 11
+
+            addTimeBucket.StartTime = BitConverter.ToInt16({readData(tmpID + 1), readData(tmpID + 0)}, 0)
+            addTimeBucket.TemperatureThreshold.Maximum = BitConverter.ToInt16({readData(tmpID + 3), readData(tmpID + 2)}, 0)
+            addTimeBucket.TemperatureThreshold.IsRelayConnectWhenBeyondTheMaximum = If(readData(tmpID + 4) = 1, True, False)
+            addTimeBucket.HumidityThreshold.Maximum = BitConverter.ToInt16({readData(tmpID + 6), readData(tmpID + 5)}, 0)
+            addTimeBucket.HumidityThreshold.IsRelayConnectWhenBeyondTheMaximum = If(readData(tmpID + 7) = 1, True, False)
+            addTimeBucket.CO2Threshold.Maximum = BitConverter.ToInt16({readData(tmpID + 9), readData(tmpID + 8)}, 0)
+            addTimeBucket.CO2Threshold.IsRelayConnectWhenBeyondTheMaximum = If(readData(tmpID + 10) = 1, True, False)
+
+            AppSettingHelper.Settings.OtherTimeBucketItems.Add(addTimeBucket)
+        Next
+
+    End Sub
 #End Region
 
 #Region "下发配置信息"
+    ''' <summary>
+    ''' 下发配置信息
+    ''' </summary>
+    Public Shared Sub SetTimeBucket()
+        If Not SP.IsOpen Then
+            Throw New Exception("串口未连接")
+        End If
 
+        Dim tmpStr = "aadb" & AppSettingHelper.Settings.DefaultTimeBucket.ToString & "00"
+        For Each item In AppSettingHelper.Settings.OtherTimeBucketItems
+            tmpStr += item.ToString
+        Next
+        tmpStr += "0000"
+        Dim sendData() = Wangk.Hash.Hex2Bin(tmpStr)
+
+        sendData(2) = &H1
+        sendData(3) = &H4
+        sendData(13) = AppSettingHelper.Settings.OtherTimeBucketItems.Count
+
+        Dim CRC = Wangk.Hash.GetCRC16Modbus(sendData, sendData.Count - 2)
+        Dim CRCBytes = BitConverter.GetBytes(CRC)
+        sendData(sendData.Count - 2) = CRCBytes(0)
+        sendData(sendData.Count - 1) = CRCBytes(1)
+
+        '发送指令
+        SP.Write(sendData, 0, sendData.Count)
+        '等待数据返回
+        Threading.Thread.Sleep(500)
+        Dim readData(128 - 1) As Byte
+        Dim readCount = SP.Read(readData, 0, 128)
+
+        '判断CRC
+        CRC = Wangk.Hash.GetCRC16Modbus(readData, readCount - 2)
+        CRCBytes = BitConverter.GetBytes(CRC)
+        If readData(readCount - 2) <> CRCBytes(0) OrElse
+            readData(readCount - 1) <> CRCBytes(1) Then
+            Throw New Exception($"数据校验失败:{Wangk.Hash.Bin2Hex(readData)}")
+        End If
+
+        If readData(readCount) <> &H1A OrElse
+            readData(readCount + 1) <> &H1B Then
+            Throw New Exception($"下发失败")
+        End If
+    End Sub
 #End Region
 
 #Region "单片机对时"
@@ -105,6 +214,10 @@ Public NotInheritable Class HardwareHelper
     ''' 单片机对时
     ''' </summary>
     Public Shared Sub SetMCUDatetime()
+        If Not SP.IsOpen Then
+            Throw New Exception("串口未连接")
+        End If
+
         Dim sendData() = Wangk.Hash.Hex2Bin("aadb0106000000000000000000")
 
         sendData(4) = Now.Year \ &H100
@@ -120,7 +233,7 @@ Public NotInheritable Class HardwareHelper
         sendData(sendData.Count - 2) = CRCBytes(0)
         sendData(sendData.Count - 1) = CRCBytes(1)
 
-        '发送检测指令
+        '发送指令
         SP.Write(sendData, 0, sendData.Count)
         '等待数据返回
         Threading.Thread.Sleep(500)

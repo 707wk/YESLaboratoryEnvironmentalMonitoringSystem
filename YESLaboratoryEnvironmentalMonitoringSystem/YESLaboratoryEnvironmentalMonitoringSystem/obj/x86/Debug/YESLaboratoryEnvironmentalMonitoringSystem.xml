@@ -72,6 +72,11 @@ YESLaboratoryEnvironmentalMonitoringSystem
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
 </member>
+<member name="M:YESLaboratoryEnvironmentalMonitoringSystem.MainForm.ControlState(System.Boolean)">
+ <summary>
+ 连接后控件状态
+ </summary>
+</member>
 <member name="T:YESLaboratoryEnvironmentalMonitoringSystem.HardwareHelper">
  <summary>
  硬件辅助类
@@ -88,11 +93,6 @@ YESLaboratoryEnvironmentalMonitoringSystem
  </summary>
  <returns></returns>
 </member>
-<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.HardwareHelper.UIMainForm">
- <summary>
- 主窗体
- </summary>
-</member>
 <member name="M:YESLaboratoryEnvironmentalMonitoringSystem.HardwareHelper.Connect(System.String,System.Int32)">
  <summary>
  连接串口
@@ -106,6 +106,16 @@ YESLaboratoryEnvironmentalMonitoringSystem
 <member name="M:YESLaboratoryEnvironmentalMonitoringSystem.HardwareHelper.GetSensorData">
  <summary>
  读取传感器监测值
+ </summary>
+</member>
+<member name="M:YESLaboratoryEnvironmentalMonitoringSystem.HardwareHelper.GetTimeBucket">
+ <summary>
+ 回读配置信息
+ </summary>
+</member>
+<member name="M:YESLaboratoryEnvironmentalMonitoringSystem.HardwareHelper.SetTimeBucket">
+ <summary>
+ 下发配置信息
  </summary>
 </member>
 <member name="M:YESLaboratoryEnvironmentalMonitoringSystem.HardwareHelper.SetMCUDatetime">
@@ -168,6 +178,56 @@ YESLaboratoryEnvironmentalMonitoringSystem
 <member name="F:YESLaboratoryEnvironmentalMonitoringSystem.AppSetting.pollingInterval">
  <summary>
  设备轮询间隔(ms)
+ </summary>
+</member>
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.AppSetting.DefaultTimeBucket">
+ <summary>
+ 默认设置
+ </summary>
+</member>
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.AppSetting.OtherTimeBucketItems">
+ <summary>
+ 其他时间段设置
+ </summary>
+</member>
+<member name="T:YESLaboratoryEnvironmentalMonitoringSystem.DetectionInfo">
+ <summary>
+ 监测值信息
+ </summary>
+</member>
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.DetectionInfo.Maximum">
+ <summary>
+ 最大值
+ </summary>
+</member>
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.DetectionInfo.IsRelayConnectWhenBeyondTheMaximum">
+ <summary>
+ 超过最大值时继电器是否连通
+ </summary>
+</member>
+<member name="T:YESLaboratoryEnvironmentalMonitoringSystem.TimeBucketInfo">
+ <summary>
+ 时间段设置信息
+ </summary>
+</member>
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.TimeBucketInfo.StartTime">
+ <summary>
+ 开始时间(1比30分钟)
+ </summary>
+</member>
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.TimeBucketInfo.TemperatureThreshold">
+ <summary>
+ 温度阈值
+ </summary>
+</member>
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.TimeBucketInfo.HumidityThreshold">
+ <summary>
+ 湿度阈值
+ </summary>
+</member>
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.TimeBucketInfo.CO2Threshold">
+ <summary>
+ CO2阈值
  </summary>
 </member>
 </members>

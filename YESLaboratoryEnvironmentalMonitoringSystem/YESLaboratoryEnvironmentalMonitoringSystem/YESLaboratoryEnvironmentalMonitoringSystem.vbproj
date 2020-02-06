@@ -95,9 +95,6 @@
     <Compile Include="01.UserInterfaceLayer\MainForm\Control\TimeBucketControl.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="01.UserInterfaceLayer\MainForm\Control\UserRadioButton.vb">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="01.UserInterfaceLayer\MainForm\MainForm.Designer.vb">
       <DependentUpon>MainForm.vb</DependentUpon>
     </Compile>
@@ -107,6 +104,8 @@
     <Compile Include="02.BusinessLogicLayer\HardwareHelper.vb" />
     <Compile Include="03.DataAccessLayer\AppSetting\AppSettingHelper.vb" />
     <Compile Include="03.DataAccessLayer\AppSetting\AppSetting.vb" />
+    <Compile Include="03.DataAccessLayer\DetectionInfo.vb" />
+    <Compile Include="03.DataAccessLayer\TimeBucketInfo.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

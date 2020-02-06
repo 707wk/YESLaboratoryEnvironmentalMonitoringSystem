@@ -36,16 +36,16 @@ Partial Class TimeBucketControl
         Me.Label24 = New System.Windows.Forms.Label()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Label26 = New System.Windows.Forms.Label()
-        Me.NumericUpDown5 = New System.Windows.Forms.NumericUpDown()
-        Me.NumericUpDown6 = New System.Windows.Forms.NumericUpDown()
+        Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
+        Me.NumericUpDown3 = New System.Windows.Forms.NumericUpDown()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.SwitchButton1 = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.SwitchButton2 = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.SwitchButton3 = New DevComponents.DotNetBar.Controls.SwitchButton()
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDown5, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NumericUpDown6, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Button2
@@ -55,7 +55,7 @@ Partial Class TimeBucketControl
         Me.Button2.FlatAppearance.BorderSize = 0
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button2.Image = Global.YESLaboratoryEnvironmentalMonitoringSystem.My.Resources.Resources.close_20px
-        Me.Button2.Location = New System.Drawing.Point(815, 3)
+        Me.Button2.Location = New System.Drawing.Point(796, 3)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(28, 28)
         Me.Button2.TabIndex = 4
@@ -176,22 +176,22 @@ Partial Class TimeBucketControl
         Me.Label26.TabIndex = 13
         Me.Label26.Text = "CO2浓度值 大于"
         '
-        'NumericUpDown5
+        'NumericUpDown2
         '
-        Me.NumericUpDown5.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.NumericUpDown5.DecimalPlaces = 1
-        Me.NumericUpDown5.Location = New System.Drawing.Point(574, 35)
-        Me.NumericUpDown5.Name = "NumericUpDown5"
-        Me.NumericUpDown5.Size = New System.Drawing.Size(50, 19)
-        Me.NumericUpDown5.TabIndex = 8
+        Me.NumericUpDown2.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown2.DecimalPlaces = 1
+        Me.NumericUpDown2.Location = New System.Drawing.Point(574, 35)
+        Me.NumericUpDown2.Name = "NumericUpDown2"
+        Me.NumericUpDown2.Size = New System.Drawing.Size(50, 19)
+        Me.NumericUpDown2.TabIndex = 8
         '
-        'NumericUpDown6
+        'NumericUpDown3
         '
-        Me.NumericUpDown6.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.NumericUpDown6.Location = New System.Drawing.Point(574, 63)
-        Me.NumericUpDown6.Name = "NumericUpDown6"
-        Me.NumericUpDown6.Size = New System.Drawing.Size(50, 19)
-        Me.NumericUpDown6.TabIndex = 8
+        Me.NumericUpDown3.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.NumericUpDown3.Location = New System.Drawing.Point(574, 63)
+        Me.NumericUpDown3.Name = "NumericUpDown3"
+        Me.NumericUpDown3.Size = New System.Drawing.Size(50, 19)
+        Me.NumericUpDown3.TabIndex = 8
         '
         'Label2
         '
@@ -269,18 +269,18 @@ Partial Class TimeBucketControl
         Me.Controls.Add(Me.Label26)
         Me.Controls.Add(Me.Label12)
         Me.Controls.Add(Me.Label24)
-        Me.Controls.Add(Me.NumericUpDown6)
+        Me.Controls.Add(Me.NumericUpDown3)
         Me.Controls.Add(Me.Label25)
-        Me.Controls.Add(Me.NumericUpDown5)
+        Me.Controls.Add(Me.NumericUpDown2)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ForeColor = System.Drawing.Color.White
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "TimeBucketControl"
-        Me.Size = New System.Drawing.Size(846, 89)
+        Me.Size = New System.Drawing.Size(827, 89)
         CType(Me.TrackBar1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDown5, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NumericUpDown6, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -299,8 +299,8 @@ Partial Class TimeBucketControl
     Friend WithEvents Label24 As Label
     Friend WithEvents Label25 As Label
     Friend WithEvents Label26 As Label
-    Friend WithEvents NumericUpDown5 As NumericUpDown
-    Friend WithEvents NumericUpDown6 As NumericUpDown
+    Friend WithEvents NumericUpDown2 As NumericUpDown
+    Friend WithEvents NumericUpDown3 As NumericUpDown
     Friend WithEvents Label2 As Label
     Friend WithEvents SwitchButton1 As DevComponents.DotNetBar.Controls.SwitchButton
     Friend WithEvents SwitchButton2 As DevComponents.DotNetBar.Controls.SwitchButton
