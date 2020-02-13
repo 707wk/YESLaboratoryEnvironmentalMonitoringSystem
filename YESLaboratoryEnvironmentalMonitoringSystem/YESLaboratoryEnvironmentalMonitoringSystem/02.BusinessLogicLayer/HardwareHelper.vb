@@ -13,17 +13,11 @@ Public NotInheritable Class HardwareHelper
     ''' <summary>
     ''' 是否连接串口
     ''' </summary>
-    ''' <returns></returns>
     Public Shared ReadOnly Property IsOpen As Boolean
         Get
             Return SP.IsOpen
         End Get
     End Property
-
-    '''' <summary>
-    '''' 主窗体
-    '''' </summary>
-    'Public Shared UIMainForm As MainForm
 
 #Region "连接串口"
     ''' <summary>
