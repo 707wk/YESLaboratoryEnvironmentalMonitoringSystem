@@ -189,6 +189,7 @@ Partial Class TimeBucketControl
         '
         Me.NumericUpDown3.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.NumericUpDown3.Location = New System.Drawing.Point(574, 63)
+        Me.NumericUpDown3.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
         Me.NumericUpDown3.Name = "NumericUpDown3"
         Me.NumericUpDown3.Size = New System.Drawing.Size(50, 19)
         Me.NumericUpDown3.TabIndex = 8

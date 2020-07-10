@@ -1,4 +1,5 @@
-﻿Imports Newtonsoft.Json
+﻿Imports System.IO
+Imports Newtonsoft.Json
 ''' <summary>
 ''' 全局配置辅助类
 ''' </summary>
@@ -6,37 +7,29 @@ Public Class AppSettingHelper
     Private Sub New()
     End Sub
 
-#Region "程序标志"
-    Private Shared _GUID As String
+#Region "程序集GUID"
+    <Newtonsoft.Json.JsonIgnore>
+    Private _GUID As String
     ''' <summary>
-    ''' 程序标志
+    ''' 程序集GUID
     ''' </summary>
-    ''' <returns></returns>
-    Public Shared ReadOnly Property GUID As String
+    <Newtonsoft.Json.JsonIgnore>
+    Public ReadOnly Property GUID As String
         Get
-            If String.IsNullOrEmpty(_GUID) Then
-                Dim guid_attr As Attribute = Attribute.GetCustomAttribute(Reflection.Assembly.GetExecutingAssembly(), GetType(Runtime.InteropServices.GuidAttribute))
-                _GUID = CType(guid_attr, Runtime.InteropServices.GuidAttribute).Value
-            End If
-
             Return _GUID
         End Get
     End Property
 #End Region
 
-#Region "程序版本"
-    Private Shared _ProductVersion As String
+#Region "程序集文件版本"
+    <Newtonsoft.Json.JsonIgnore>
+    Private _ProductVersion As String
     ''' <summary>
-    ''' 程序版本
+    ''' 程序集文件版本
     ''' </summary>
-    ''' <returns></returns>
-    Public Shared ReadOnly Property ProductVersion As String
+    <Newtonsoft.Json.JsonIgnore>
+    Public ReadOnly Property ProductVersion As String
         Get
-            If String.IsNullOrEmpty(_ProductVersion) Then
-                Dim assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location
-                _ProductVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(assemblyLocation).ProductVersion
-            End If
-
             Return _ProductVersion
         End Get
     End Property
@@ -46,24 +39,22 @@ Public Class AppSettingHelper
     ''' <summary>
     ''' 实例
     ''' </summary>
-    Private Shared instance As AppSetting
+    Private Shared instance As AppSettingHelper
     ''' <summary>
-    ''' 参数
+    ''' 获取实例
     ''' </summary>
-    Public Shared ReadOnly Property Settings As AppSetting
+    Public Shared ReadOnly Property GetInstance As AppSettingHelper
         Get
             If instance Is Nothing Then
-
                 LoadFromLocaltion()
 
-                '初始化
-                With instance
-                    ''语言包
-                    'Wangk.Resource.MultiLanguageHelper.Init(.SelectLang, My.Application.Info.Title)
+                '程序集GUID
+                Dim guid_attr As Attribute = Attribute.GetCustomAttribute(Reflection.Assembly.GetExecutingAssembly(), GetType(Runtime.InteropServices.GuidAttribute))
+                instance._GUID = CType(guid_attr, Runtime.InteropServices.GuidAttribute).Value
 
-                    ''日志
-                    'Wangk.Tools.LoggerHelper.Init(saveDaysMax:=90)
-                End With
+                '程序集文件版本
+                Dim assemblyLocation = System.Reflection.Assembly.GetExecutingAssembly().Location
+                instance._ProductVersion = System.Diagnostics.FileVersionInfo.GetVersionInfo(assemblyLocation).ProductVersion
 
             End If
 
@@ -85,13 +76,13 @@ Public Class AppSettingHelper
 
         '反序列化
         Try
-            instance = JsonConvert.DeserializeObject(Of AppSetting)(
+            instance = JsonConvert.DeserializeObject(Of AppSettingHelper)(
                 System.IO.File.ReadAllText($"{Path}\Hunan Yestech\{My.Application.Info.ProductName}\Data\Setting.json",
                                            System.Text.Encoding.UTF8))
 
         Catch ex As Exception
             '使用默认参数
-            instance = New AppSetting
+            instance = New AppSettingHelper
 
         End Try
 
@@ -126,5 +117,36 @@ Public Class AppSettingHelper
 
     End Sub
 #End Region
+
+#Region "日志记录"
+    ''' <summary>
+    ''' 日志记录
+    ''' </summary>
+    <Newtonsoft.Json.JsonIgnore>
+    Public Logger As NLog.Logger = NLog.LogManager.GetCurrentClassLogger()
+#End Region
+
+    ''' <summary>
+    ''' 串口号
+    ''' </summary>
+    Public SerialPort As String
+    ''' <summary>
+    ''' 波特率
+    ''' </summary>
+    Public Shared BPS As Integer = 9600
+
+    ''' <summary>
+    ''' 设备轮询间隔(ms)
+    ''' </summary>
+    Public Shared pollingInterval As Integer = 5000
+
+    ''' <summary>
+    ''' 默认设置
+    ''' </summary>
+    Public DefaultTimeBucket As TimeBucketInfo
+    ''' <summary>
+    ''' 其他时间段设置
+    ''' </summary>
+    Public OtherTimeBucketItems As New List(Of TimeBucketInfo)
 
 End Class

@@ -72,9 +72,29 @@ YESLaboratoryEnvironmentalMonitoringSystem
   查找 System.Drawing.Bitmap 类型的本地化资源。
 </summary>
 </member>
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.MainForm.UpdateTimer">
+ <summary>
+ 检测定时器
+ </summary>
+</member>
 <member name="M:YESLaboratoryEnvironmentalMonitoringSystem.MainForm.ControlState(System.Boolean)">
  <summary>
  连接后控件状态
+ </summary>
+</member>
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.MainForm.IsUpdateEnd">
+ <summary>
+ 获取数据
+ </summary>
+</member>
+<member name="M:YESLaboratoryEnvironmentalMonitoringSystem.MainForm.GetSensorData(System.Object,System.Timers.ElapsedEventArgs)">
+ <summary>
+ 获取数据
+ </summary>
+</member>
+<member name="M:YESLaboratoryEnvironmentalMonitoringSystem.MainForm.UpdateSensorData(System.Int32[])">
+ <summary>
+ 更新数据
  </summary>
 </member>
 <member name="T:YESLaboratoryEnvironmentalMonitoringSystem.HardwareHelper">
@@ -91,7 +111,6 @@ YESLaboratoryEnvironmentalMonitoringSystem
  <summary>
  是否连接串口
  </summary>
- <returns></returns>
 </member>
 <member name="M:YESLaboratoryEnvironmentalMonitoringSystem.HardwareHelper.Connect(System.String,System.Int32)">
  <summary>
@@ -130,24 +149,22 @@ YESLaboratoryEnvironmentalMonitoringSystem
 </member>
 <member name="P:YESLaboratoryEnvironmentalMonitoringSystem.AppSettingHelper.GUID">
  <summary>
- 程序标志
+ 程序集GUID
  </summary>
- <returns></returns>
 </member>
 <member name="P:YESLaboratoryEnvironmentalMonitoringSystem.AppSettingHelper.ProductVersion">
  <summary>
- 程序版本
+ 程序集文件版本
  </summary>
- <returns></returns>
 </member>
 <member name="F:YESLaboratoryEnvironmentalMonitoringSystem.AppSettingHelper.instance">
  <summary>
  实例
  </summary>
 </member>
-<member name="P:YESLaboratoryEnvironmentalMonitoringSystem.AppSettingHelper.Settings">
+<member name="P:YESLaboratoryEnvironmentalMonitoringSystem.AppSettingHelper.GetInstance">
  <summary>
- 参数
+ 获取实例
  </summary>
 </member>
 <member name="M:YESLaboratoryEnvironmentalMonitoringSystem.AppSettingHelper.LoadFromLocaltion">
@@ -160,32 +177,32 @@ YESLaboratoryEnvironmentalMonitoringSystem
  保存配置到本地
  </summary>
 </member>
-<member name="T:YESLaboratoryEnvironmentalMonitoringSystem.AppSetting">
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.AppSettingHelper.Logger">
  <summary>
- 全局配置类
+ 日志记录
  </summary>
 </member>
-<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.AppSetting.SerialPort">
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.AppSettingHelper.SerialPort">
  <summary>
  串口号
  </summary>
 </member>
-<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.AppSetting.BPS">
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.AppSettingHelper.BPS">
  <summary>
  波特率
  </summary>
 </member>
-<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.AppSetting.pollingInterval">
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.AppSettingHelper.pollingInterval">
  <summary>
  设备轮询间隔(ms)
  </summary>
 </member>
-<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.AppSetting.DefaultTimeBucket">
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.AppSettingHelper.DefaultTimeBucket">
  <summary>
  默认设置
  </summary>
 </member>
-<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.AppSetting.OtherTimeBucketItems">
+<member name="F:YESLaboratoryEnvironmentalMonitoringSystem.AppSettingHelper.OtherTimeBucketItems">
  <summary>
  其他时间段设置
  </summary>

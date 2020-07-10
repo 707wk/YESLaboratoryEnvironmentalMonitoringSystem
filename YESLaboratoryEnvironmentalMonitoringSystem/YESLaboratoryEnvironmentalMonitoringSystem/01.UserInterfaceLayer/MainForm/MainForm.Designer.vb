@@ -56,6 +56,9 @@ Partial Class MainForm
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.MicroChart1 = New DevComponents.DotNetBar.MicroChart()
+        Me.MicroChart2 = New DevComponents.DotNetBar.MicroChart()
+        Me.MicroChart3 = New DevComponents.DotNetBar.MicroChart()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.SwitchButton3 = New DevComponents.DotNetBar.Controls.SwitchButton()
         Me.SwitchButton2 = New DevComponents.DotNetBar.Controls.SwitchButton()
@@ -72,7 +75,8 @@ Partial Class MainForm
         Me.NumericUpDown3 = New System.Windows.Forms.NumericUpDown()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
-        Me.GetSensorDataTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.RibbonControl1.SuspendLayout()
         Me.RibbonPanel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -83,6 +87,7 @@ Partial Class MainForm
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'StyleManager1
@@ -284,7 +289,7 @@ Partial Class MainForm
         '
         'ComboBoxItem1
         '
-        Me.ComboBoxItem1.ComboWidth = 80
+        Me.ComboBoxItem1.ComboWidth = 84
         Me.ComboBoxItem1.DropDownHeight = 106
         Me.ComboBoxItem1.ItemHeight = 18
         Me.ComboBoxItem1.LabelForeColor = System.Drawing.Color.FromArgb(CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer), CType(CType(224, Byte), Integer))
@@ -337,7 +342,7 @@ Partial Class MainForm
         Me.GroupBox1.ForeColor = System.Drawing.Color.White
         Me.GroupBox1.Location = New System.Drawing.Point(359, 125)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(842, 470)
+        Me.GroupBox1.Size = New System.Drawing.Size(842, 475)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "其他时间段"
@@ -348,7 +353,7 @@ Partial Class MainForm
         Me.FlowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.FlowLayoutPanel1.Location = New System.Drawing.Point(3, 46)
         Me.FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(836, 421)
+        Me.FlowLayoutPanel1.Size = New System.Drawing.Size(836, 426)
         Me.FlowLayoutPanel1.TabIndex = 0
         '
         'ToolStrip1
@@ -377,41 +382,45 @@ Partial Class MainForm
         Me.GroupBox2.ForeColor = System.Drawing.Color.White
         Me.GroupBox2.Location = New System.Drawing.Point(12, 125)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(341, 129)
+        Me.GroupBox2.Size = New System.Drawing.Size(341, 184)
         Me.GroupBox2.TabIndex = 2
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "传感器状态"
         '
         'TableLayoutPanel1
         '
-        Me.TableLayoutPanel1.ColumnCount = 3
+        Me.TableLayoutPanel1.ColumnCount = 4
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle())
         Me.TableLayoutPanel1.Controls.Add(Me.Label1, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Label2, 0, 1)
         Me.TableLayoutPanel1.Controls.Add(Me.Label3, 0, 2)
-        Me.TableLayoutPanel1.Controls.Add(Me.CO2Value, 1, 2)
-        Me.TableLayoutPanel1.Controls.Add(Me.HumidityValue, 1, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.TemperatureValue, 1, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label7, 2, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label8, 2, 1)
-        Me.TableLayoutPanel1.Controls.Add(Me.Label9, 2, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.CO2Value, 2, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.HumidityValue, 2, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.TemperatureValue, 2, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.Label7, 3, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.Label8, 3, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.Label9, 3, 2)
+        Me.TableLayoutPanel1.Controls.Add(Me.MicroChart1, 1, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.MicroChart2, 1, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.MicroChart3, 1, 2)
         Me.TableLayoutPanel1.Font = New System.Drawing.Font("微软雅黑", 10.5!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(67, 22)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(14, 22)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
         Me.TableLayoutPanel1.RowCount = 3
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33332!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33334!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(217, 95)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(309, 149)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'Label1
         '
         Me.Label1.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(32, 6)
+        Me.Label1.Location = New System.Drawing.Point(32, 15)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(41, 19)
         Me.Label1.TabIndex = 0
@@ -421,7 +430,7 @@ Partial Class MainForm
         '
         Me.Label2.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(32, 37)
+        Me.Label2.Location = New System.Drawing.Point(32, 64)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(41, 19)
         Me.Label2.TabIndex = 0
@@ -431,7 +440,7 @@ Partial Class MainForm
         '
         Me.Label3.Anchor = System.Windows.Forms.AnchorStyles.Right
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(3, 69)
+        Me.Label3.Location = New System.Drawing.Point(3, 114)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(70, 19)
         Me.Label3.TabIndex = 0
@@ -441,7 +450,7 @@ Partial Class MainForm
         '
         Me.CO2Value.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.CO2Value.AutoSize = True
-        Me.CO2Value.Location = New System.Drawing.Point(102, 69)
+        Me.CO2Value.Location = New System.Drawing.Point(215, 114)
         Me.CO2Value.Name = "CO2Value"
         Me.CO2Value.Size = New System.Drawing.Size(18, 19)
         Me.CO2Value.TabIndex = 0
@@ -451,7 +460,7 @@ Partial Class MainForm
         '
         Me.HumidityValue.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.HumidityValue.AutoSize = True
-        Me.HumidityValue.Location = New System.Drawing.Point(102, 37)
+        Me.HumidityValue.Location = New System.Drawing.Point(215, 64)
         Me.HumidityValue.Name = "HumidityValue"
         Me.HumidityValue.Size = New System.Drawing.Size(18, 19)
         Me.HumidityValue.TabIndex = 0
@@ -461,7 +470,7 @@ Partial Class MainForm
         '
         Me.TemperatureValue.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.TemperatureValue.AutoSize = True
-        Me.TemperatureValue.Location = New System.Drawing.Point(102, 6)
+        Me.TemperatureValue.Location = New System.Drawing.Point(215, 15)
         Me.TemperatureValue.Name = "TemperatureValue"
         Me.TemperatureValue.Size = New System.Drawing.Size(18, 19)
         Me.TemperatureValue.TabIndex = 0
@@ -471,7 +480,7 @@ Partial Class MainForm
         '
         Me.Label7.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(149, 6)
+        Me.Label7.Location = New System.Drawing.Point(262, 15)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(24, 19)
         Me.Label7.TabIndex = 0
@@ -481,7 +490,7 @@ Partial Class MainForm
         '
         Me.Label8.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(149, 37)
+        Me.Label8.Location = New System.Drawing.Point(262, 64)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(44, 19)
         Me.Label8.TabIndex = 0
@@ -491,11 +500,53 @@ Partial Class MainForm
         '
         Me.Label9.Anchor = System.Windows.Forms.AnchorStyles.Left
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(149, 69)
+        Me.Label9.Location = New System.Drawing.Point(262, 114)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(41, 19)
         Me.Label9.TabIndex = 0
         Me.Label9.Text = "PPM"
+        '
+        'MicroChart1
+        '
+        '
+        '
+        '
+        Me.MicroChart1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.MicroChart1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.MicroChart1.Location = New System.Drawing.Point(79, 3)
+        Me.MicroChart1.Name = "MicroChart1"
+        Me.MicroChart1.Size = New System.Drawing.Size(107, 43)
+        Me.MicroChart1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.MicroChart1.TabIndex = 1
+        Me.MicroChart1.Text = "MicroChart1"
+        '
+        'MicroChart2
+        '
+        '
+        '
+        '
+        Me.MicroChart2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.MicroChart2.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.MicroChart2.Location = New System.Drawing.Point(79, 52)
+        Me.MicroChart2.Name = "MicroChart2"
+        Me.MicroChart2.Size = New System.Drawing.Size(107, 43)
+        Me.MicroChart2.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.MicroChart2.TabIndex = 1
+        Me.MicroChart2.Text = "MicroChart1"
+        '
+        'MicroChart3
+        '
+        '
+        '
+        '
+        Me.MicroChart3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square
+        Me.MicroChart3.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.MicroChart3.Location = New System.Drawing.Point(79, 101)
+        Me.MicroChart3.Name = "MicroChart3"
+        Me.MicroChart3.Size = New System.Drawing.Size(107, 45)
+        Me.MicroChart3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled
+        Me.MicroChart3.TabIndex = 1
+        Me.MicroChart3.Text = "MicroChart1"
         '
         'GroupBox3
         '
@@ -517,9 +568,9 @@ Partial Class MainForm
         Me.GroupBox3.Controls.Add(Me.Label25)
         Me.GroupBox3.Controls.Add(Me.NumericUpDown2)
         Me.GroupBox3.ForeColor = System.Drawing.Color.White
-        Me.GroupBox3.Location = New System.Drawing.Point(12, 260)
+        Me.GroupBox3.Location = New System.Drawing.Point(12, 315)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(341, 335)
+        Me.GroupBox3.Size = New System.Drawing.Size(341, 285)
         Me.GroupBox3.TabIndex = 3
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "默认设置"
@@ -651,6 +702,7 @@ Partial Class MainForm
         '
         Me.NumericUpDown3.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.NumericUpDown3.Location = New System.Drawing.Point(114, 79)
+        Me.NumericUpDown3.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
         Me.NumericUpDown3.Name = "NumericUpDown3"
         Me.NumericUpDown3.Size = New System.Drawing.Size(50, 19)
         Me.NumericUpDown3.TabIndex = 20
@@ -673,19 +725,34 @@ Partial Class MainForm
         Me.NumericUpDown2.Size = New System.Drawing.Size(50, 19)
         Me.NumericUpDown2.TabIndex = 21
         '
-        'GetSensorDataTimer
+        'StatusStrip1
         '
+        Me.StatusStrip1.BackColor = System.Drawing.SystemColors.Control
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 603)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(1213, 22)
+        Me.StatusStrip1.TabIndex = 4
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(20, 17)
+        Me.ToolStripStatusLabel1.Text = "无"
         '
         'MainForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 17.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(45, Byte), Integer), CType(CType(45, Byte), Integer), CType(CType(48, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1213, 607)
+        Me.ClientSize = New System.Drawing.Size(1213, 625)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.RibbonControl1)
+        Me.Controls.Add(Me.StatusStrip1)
         Me.Font = New System.Drawing.Font("微软雅黑", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
         Me.ForeColor = System.Drawing.Color.White
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -708,7 +775,10 @@ Partial Class MainForm
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents StyleManager1 As DevComponents.DotNetBar.StyleManager
@@ -759,5 +829,9 @@ Partial Class MainForm
     Friend WithEvents NumericUpDown3 As NumericUpDown
     Friend WithEvents Label25 As Label
     Friend WithEvents NumericUpDown2 As NumericUpDown
-    Friend WithEvents GetSensorDataTimer As Timer
+    Friend WithEvents StatusStrip1 As StatusStrip
+    Friend WithEvents ToolStripStatusLabel1 As ToolStripStatusLabel
+    Friend WithEvents MicroChart1 As DevComponents.DotNetBar.MicroChart
+    Friend WithEvents MicroChart2 As DevComponents.DotNetBar.MicroChart
+    Friend WithEvents MicroChart3 As DevComponents.DotNetBar.MicroChart
 End Class
