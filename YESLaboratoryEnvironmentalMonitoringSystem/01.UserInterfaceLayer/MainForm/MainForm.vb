@@ -218,8 +218,7 @@ Public Class MainForm
         UpdateTimer.Stop()
 
         Using tmpDialog As New Wangk.Resource.BackgroundWorkDialog With {
-            .Text = ButtonItem4.Text,
-            .IsPercent = False
+            .Text = ButtonItem4.Text
         }
             tmpDialog.Start(Sub()
                                 Threading.Thread.Sleep(1000)
@@ -246,8 +245,7 @@ Public Class MainForm
         UpdateTimer.Stop()
 
         Using tmpDialog As New Wangk.Resource.BackgroundWorkDialog With {
-            .Text = ButtonItem5.Text,
-            .IsPercent = False
+            .Text = ButtonItem5.Text
         }
             tmpDialog.Start(Sub()
                                 Threading.Thread.Sleep(1000)
@@ -272,8 +270,7 @@ Public Class MainForm
         UpdateTimer.Stop()
 
         Using tmpDialog As New Wangk.Resource.BackgroundWorkDialog With {
-            .Text = ButtonItem6.Text,
-            .IsPercent = False
+            .Text = ButtonItem6.Text
         }
             tmpDialog.Start(Sub()
                                 Threading.Thread.Sleep(1000)
